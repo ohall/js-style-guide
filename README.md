@@ -10,6 +10,91 @@ https://github.com/rwaldron/idiomatic.js/
 Camel case vs this-way?
 
 
+AngularJS
+==============
+Environment
+--------------
+
+General Style Guidelines
+-------------------
+For readability, controllers, services, directives and methods added to modules should be declared at the top of the page seperate from their implementations.
+
+	//bad
+	var myApp = angular.module('myApp',[]);
+	 
+	myApp.controller('GreetingCtrl', ['$scope', function($scope) {
+	    $scope.greeting = 'Hola!';
+	}]);
+
+	//good
+	var myApp = angular.module('myApp',[]);
+	 
+	myApp.controller('GreetingCtrl', GreetingCtrl);
+	
+	...
+	
+	function GreetingCtrl($scope){
+		$scope.greeting = 'Hola!';
+	}
+
+
+
+Modules
+--------------
+
+Controllers
+--------------
+
+
+Models & Services
+--------------
+
+
+Directives
+--------------
+
+
+Filters
+--------------
+A simple filter:
+
+	var app = angular.module('YourApp');
+
+	app.filter('biggerThanX', biggerThanX);
+
+	function biggerThanX(){
+		
+		var biggerThanX = function(elements, x){
+			result = [];
+			for(var i=0; i<elements.length; i++){
+			  var elem = elements[i];
+			  if(elem.someNumber > x){
+			      results.push(elem);
+			  }
+			}
+			return result;
+		};
+	
+		return biggerThanX;
+	}
+
+
+Fiters are used like Unix pipes in Bash
+
+	<ul ng-controller="SomeController">
+	    <li ng-repeat="item in items | biggerThanX:5">{{ item.someNumber }}</li>
+	</ul>
+
+Requests
+--------------
+**Restangular**
+
+**$http**
+
+**ngResource**
+
+
+
 Javascript
 ==============
 
@@ -1140,90 +1225,6 @@ Use find with scoped jQuery object queries.
 
 	// good (faster)
 	$($sidebar[0]).find('ul');
-
-
-AngularJS
-==============
-Environment
---------------
-
-General Style Guidelines
--------------------
-For readability, controllers, services, directives and methods added to modules should be declared at the top of the page seperate from their implementations.
-
-	//bad
-	var myApp = angular.module('myApp',[]);
-	 
-	myApp.controller('GreetingCtrl', ['$scope', function($scope) {
-	    $scope.greeting = 'Hola!';
-	}]);
-
-	//good
-	var myApp = angular.module('myApp',[]);
-	 
-	myApp.controller('GreetingCtrl', GreetingCtrl);
-	
-	...
-	
-	function GreetingCtrl($scope){
-		$scope.greeting = 'Hola!';
-	}
-
-
-
-Modules
---------------
-
-Controllers
---------------
-
-
-Models & Services
---------------
-
-
-Directives
---------------
-
-
-Filters
---------------
-A simple filter:
-	angular.module('YourApp').
-		filter('biggerThanX', function(){
-	
-	    var biggerThanX = function(elements, x){
-	      result = [];
-	      for(var i=0; i<elements.length; i++){
-	          var elem = elements[i];
-	          if(elem.someNumber > x){
-	              results.push(elem);
-	          }
-	      }
-	      return result;
-	    };
-	
-	    return biggerThanX;
-	  }
-	);
-	]);
-
-Fiters are used like Unix pipes in Bash
-
-	<ul ng-controller="SomeController">
-	    <li ng-repeat="item in items | biggerThanX:5">{{ item.someNumber }}</li>
-	</ul>
-
-Requests
---------------
-**Restangular**
-
-**$http**
-
-**ngResource**
-
-
-
 
 
 CSS/LESS/SASS
