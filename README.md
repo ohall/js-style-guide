@@ -3,11 +3,12 @@ js-style-guide
 
 GRT Javascript Style Guide
 
-https://github.com/airbnb/javascript
-http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
-http://doc.owncloud.org/server/5.0/developer_manual/angular.html
-https://github.com/rwaldron/idiomatic.js/
-Camel case vs this-way?
+
+Sources:
+ - https://github.com/airbnb/javascript
+ - http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+ - http://doc.owncloud.org/server/5.0/developer_manual/angular.html
+ - https://github.com/rwaldron/idiomatic.js/
 
 
 AngularJS
@@ -88,8 +89,11 @@ Fiters are used like Unix pipes in Bash
 Requests
 --------------
 **Restangular**
+Restangular is the preferred AngularJS service to handle Rest API Restful Resources
+
 
 **$http**
+
 
 **ngResource**
 
@@ -535,15 +539,15 @@ Note: ECMA-262 defines a block as a list of statements. A function declaration i
 
 **Never name a parameter arguments**, this will take precedence over the arguments object that is given to every function scope.
 
-// bad
-function nope(name, options, arguments) {
-  // ...stuff...
-}
-
-// good
-function yup(name, options, args) {
-  // ...stuff...
-}
+    // bad
+    function nope(name, options, arguments) {
+      // ...stuff...
+    }
+    
+    // good
+    function yup(name, options, args) {
+      // ...stuff...
+    }
 
 
 
@@ -617,6 +621,7 @@ Use shortcuts.
 	
 
 Some more examples:
+
 	'' == '0'           // false
 	0 == ''             // true
 	0 == '0'            // true
